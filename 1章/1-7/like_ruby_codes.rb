@@ -40,3 +40,35 @@ ary3 = [:apple, :banana, :orange]
 puts ary3
 ary4 = %i(apple banana orange)
 puts ary4
+
+# 配列の各要素から特定の属性だけを取り出す
+class User
+	attr_accessor :name
+end
+
+user1 = User.new
+user2 = User.new
+user3 = User.new
+user1.name = '田中太郎'
+user2.name = '佐藤次郎'
+user3.name = '小林三郎'
+
+users = [user1, user2, user3]
+names = []
+
+# どんどん書き方が効率化されていくよ
+users.each do |user|
+	names << user.name
+end
+p names
+
+names = users.map do |user|
+	user.name
+end
+p names
+
+names = users.map { |user| user.name }
+p names
+
+names = users.map(&:name)
+p names
